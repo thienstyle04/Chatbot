@@ -6,6 +6,7 @@ public class Message {
     private boolean isSentByUser;
     private String timestamp; // Thêm thời gian
     private boolean isLoading = false;
+    private String replyTo = null;
 
     // Constructor đầy đủ
     public Message(long id, String text, boolean isSentByUser, String timestamp) {
@@ -19,6 +20,10 @@ public class Message {
         this.isSentByUser = false; // Loading luôn nằm bên trái (phía Bot)
         this.id = -1; // ID giả
     }
+    public Message(long id, String text, boolean isSentByUser, String timestamp, String replyTo) {
+        this(id, text, isSentByUser, timestamp);
+        this.replyTo = replyTo;
+    }
 
     public boolean isLoading() { return isLoading; }
 
@@ -26,4 +31,5 @@ public class Message {
     public String getText() { return text; }
     public boolean isSentByUser() { return isSentByUser; }
     public String getTimestamp() { return timestamp; }
+    public String getReplyTo() { return replyTo; }
 }

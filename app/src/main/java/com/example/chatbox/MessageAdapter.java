@@ -34,11 +34,11 @@ public class MessageAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
     }
 
     public void removeLoading() {
-        if (!messageList.isEmpty()) {
-            int lastIndex = messageList.size() - 1;
-            if (messageList.get(lastIndex).isLoading()) {
-                messageList.remove(lastIndex);
-                notifyItemRemoved(lastIndex);
+        // Duyệt ngược từ cuối danh sách lên đầu để xóa an toàn
+        for (int i = messageList.size() - 1; i >= 0; i--) {
+            if (messageList.get(i).isLoading()) {
+                messageList.remove(i);
+                notifyItemRemoved(i);
             }
         }
     }
@@ -131,10 +131,24 @@ public class MessageAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
 
     static class ReceivedMessageViewHolder extends RecyclerView.ViewHolder {
         TextView messageText;
+        TextView replyText; // Khai báo thêm
+
         ReceivedMessageViewHolder(View itemView) {
             super(itemView);
             messageText = itemView.findViewById(R.id.text_message_body);
+            replyText = itemView.findViewById(R.id.text_reply_context); // Ánh xạ
         }
-        void bind(Message message) { messageText.setText(message.getText()); }
+
+        void bind(Message message) {
+            messageText.setText(message.getText());
+
+            // Logic hiển thị Reply
+            if (message.getReplyTo() != null && !message.getReplyTo().isEmpty()) {
+                replyText.setVisibility(View.VISIBLE);
+                replyText.setText("Trả lời: " + message.getReplyTo());
+            } else {
+                replyText.setVisibility(View.GONE);
+            }
+        }
     }
 }
