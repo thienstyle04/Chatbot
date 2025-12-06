@@ -3,20 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:showIn="navigation_view">
 
-    <group android:checkableBehavior="single">
-        <item
-            android:id="@+id/nav_new_chat"
-            android:icon="@android:drawable/ic_menu_add"
-            android:title="Đoạn chat mới" />
-        <item
-            android:id="@+id/nav_search"
-            android:icon="@android:drawable/ic_menu_search"
-            android:title="Tìm kiếm đoạn chat" />
-    </group>
-
-    <item android:id="@+id/chat_history_group" android:title="Các đoạn chat của bạn">
+    <item android:id="@+id/chat_history_group" android:title="Lịch sử trò chuyện">
         <menu>
-            <!-- Chat history will be added here dynamically -->
         </menu>
     </item>
 
