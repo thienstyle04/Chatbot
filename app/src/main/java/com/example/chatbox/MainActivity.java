@@ -163,7 +163,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         // 3. Gọi API
         ChatRequest request = new ChatRequest(text);
         // Lưu ý: Thay API Key thật của bạn vào đây
-        String apiKey = "AIzaSyAodZRErjo6Bo9uULw9-5Uhj13tzzV0TDA";
+        String apiKey = BuildConfig.GEMINI_API_KEY;
 
         apiService.sendMessage(apiKey, request).enqueue(new Callback<ChatResponse>() {
             @Override
