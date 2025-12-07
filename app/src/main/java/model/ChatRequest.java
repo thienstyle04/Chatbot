@@ -16,7 +16,7 @@ public class ChatRequest {
     public ChatRequest(String text) {
         // --- PHẦN 1: CÀI ĐẶT MỆNH LỆNH MẶC ĐỊNH ---
         // Đây là nơi bạn dạy Bot cách cư xử ngay từ đầu
-        String defaultPrompt = "Bạn là trợ lý ảo AI. Hãy luôn trả lời tôi bằng Tiếng Việt một cách tự nhiên, thân thiện và hữu ích";
+        String defaultPrompt = "Bạn là trợ lý ảo AI. Hãy luôn trả lời tôi bằng Tiếng Việt một cách tự nhiên, thân thiện và hữu íchD";
 
         this.systemInstruction = new Content();
         this.systemInstruction.parts = new ArrayList<>();

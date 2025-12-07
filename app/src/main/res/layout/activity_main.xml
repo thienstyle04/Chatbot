@@ -12,7 +12,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@android:color/white">
+        android:background="@color/main_bg">
 
         <com.google.android.material.appbar.AppBarLayout
             android:id="@+id/appBarLayout"
@@ -43,6 +43,7 @@
             android:id="@+id/welcome_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:textColor="@color/main_text"
             android:gravity="center"
             android:text="Hãy bắt đầu trò chuyện nào"
             android:textSize="24sp"
@@ -56,7 +57,6 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:padding="8dp"
-            android:background="@android:color/white"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent">
@@ -71,7 +71,8 @@
                 android:inputType="textMultiLine"
                 android:maxLines="4"
                 android:padding="12dp"
-                android:textColor="@color/black"
+                android:textColor="@color/main_text"
+                android:textColorHint="@color/sub_text"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toStartOf="@+id/sendButton"
                 app:layout_constraintStart_toStartOf="parent"
@@ -84,6 +85,7 @@
                 android:background="?attr/selectableItemBackgroundBorderless"
                 android:src="@android:drawable/ic_menu_send"
                 android:scaleType="centerInside"
+                app:tint="@color/main_text"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintTop_toTopOf="parent"/>
@@ -98,7 +100,7 @@
         android:layout_height="match_parent"
         android:layout_gravity="start"
         android:orientation="vertical"
-        android:background="@android:color/white"
+        android:background="@color/main_bg"
         android:fitsSystemWindows="true">
 
         <include layout="@layout/nav_header" />
@@ -118,14 +120,14 @@
                 android:layout_width="24dp"
                 android:layout_height="24dp"
                 android:src="@android:drawable/ic_menu_add"
-                app:tint="#000000"/>
+                app:tint="@color/main_text"/>
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Đoạn chat mới"
                 android:textSize="16sp"
                 android:textStyle="bold"
-                android:textColor="#000000"
+                android:textColor="@color/main_text"
                 android:layout_marginStart="16dp"/>
         </LinearLayout>
 
@@ -151,7 +153,7 @@
         android:layout_height="match_parent"
         android:layout_gravity="end"
         android:orientation="vertical"
-        android:background="@android:color/white"
+        android:background="@color/main_bg"
         android:fitsSystemWindows="true"
         android:clickable="true"
         android:focusable="true">
@@ -170,7 +172,7 @@
                 android:text="Tìm kiếm"
                 android:textSize="20sp"
                 android:textStyle="bold"
-                android:textColor="#000000"/>
+                android:textColor="@color/icon_tint"/>
 
             <ImageButton
                 android:id="@+id/btnCloseSearch"
@@ -206,8 +208,8 @@
                 android:layout_marginStart="8dp"
                 android:imeOptions="actionSearch"
                 android:inputType="text"
-                android:textColor="#000000"
-                android:textColorHint="#909090"/>
+                android:textColor="@color/main_text"
+                android:textColorHint="@color/sub_text"/>
         </LinearLayout>
 
         <com.google.android.material.button.MaterialButton
@@ -217,11 +219,11 @@
             android:layout_marginHorizontal="16dp"
             android:text="Lọc theo ngày"
             android:textSize="12sp"
-            android:textColor="#000000"
+            android:textColor="@color/main_text"
             app:icon="@android:drawable/ic_menu_my_calendar"
-            app:iconTint="#000000"
+            app:iconTint="@color/main_bg"
             app:iconGravity="textStart"
-            android:backgroundTint="#F0F2F5"
+            android:backgroundTint="@color/main_bg"
             app:cornerRadius="8dp"
             app:elevation="0dp"/>
 

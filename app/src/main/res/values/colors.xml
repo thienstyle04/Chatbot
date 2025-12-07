@@ -2,6 +2,15 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
-    <color name="light_pink">#FFB6C1</color>
-    <color name="light_blue">#E3F2FD</color>
+
+    <color name="main_bg">#FFFFFF</color>
+    <color name="main_text">#000000</color>
+    <color name="sub_text">#757575</color>
+    <color name="sent_bubble">#000000</color>
+    <color name="sent_text">#FFFFFF</color>
+    <color name="received_bubble">#F0F0F0</color>
+    <color name="received_text">#000000</color>
+    <color name="border_color">#000000</color>
+    <color name="search_bar_bg">#F5F5F5</color>
+    <color name="icon_tint">#000000</color>
 </resources>

@@ -33,7 +33,7 @@
             android:id="@+id/text_message_body"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="@android:color/black"
+            android:textColor="@color/received_text"
             android:textSize="16sp"/>
 
     </LinearLayout>

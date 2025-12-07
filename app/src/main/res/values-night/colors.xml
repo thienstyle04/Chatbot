@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="main_bg">#000000</color>
+    <color name="main_text">#FFFFFF</color>
+    <color name="sub_text">#B0B0B0</color>
+    <color name="sent_bubble">#FFFFFF</color>
+    <color name="sent_text">#000000</color>
+    <color name="received_bubble">#333333</color>
+    <color name="received_text">#FFFFFF</color>
+    <color name="border_color">#FFFFFF</color>
+    <color name="search_bar_bg">#1F1F1F</color>
+    <color name="icon_tint">#FFFFFF</color>
+</resources>
