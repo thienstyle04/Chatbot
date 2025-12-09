@@ -275,9 +275,11 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             welcomeText.setVisibility(View.GONE);
             recyclerView.setVisibility(View.VISIBLE);
         }
+        boolean isNewSession = false;
 
         if (currentChatId == null) {
             startNewChatSession(text);
+            isNewSession = true; // Đánh dấu là chat mới
         }
 
         // --- BƯỚC A: LUÔN HIỆN TIN NHẮN NGƯỜI DÙNG NGAY LẬP TỨC ---
@@ -289,6 +291,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         recyclerView.smoothScrollToPosition(currentChatList.size() - 1);
 
         messageEditText.setText(""); // Xóa ô nhập ngay
+        if (isNewSession) {
+            updateHistoryMenu();
+        }
 
         // --- BƯỚC B: THÊM VÀO HÀNG ĐỢI VÀ XỬ LÝ ---
         requestQueue.add(text); // Đẩy yêu cầu vào hàng đợi
@@ -314,29 +319,28 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         // Chụp lại ID hiện tại để handle callback đúng chỗ
         final String sendingChatId = currentChatId;
+        final String sendingText = textToProcess;
 
         apiService.sendMessage(apiKey, request).enqueue(new Callback<ChatResponse>() {
             @Override
             public void onResponse(Call<ChatResponse> call, Response<ChatResponse> response) {
                 // Xử lý xong 1 request
-                handleApiFinish(sendingChatId, response, null);
+                handleApiFinish(sendingChatId, sendingText, response, null);
             }
 
             @Override
             public void onFailure(Call<ChatResponse> call, Throwable t) {
-                handleApiFinish(sendingChatId, null, t);
+                handleApiFinish(sendingChatId, sendingText, null, t);
             }
         });
     }
 
-    private void handleApiFinish(String chatId, Response<ChatResponse> response, Throwable t) {
-        // 1. Luôn xóa loading trước
+    private void handleApiFinish(String chatId, String questionText, Response<ChatResponse> response, Throwable t) {
         if (isCurrentChat(chatId)) {
             messageAdapter.removeLoading();
         }
-
         // 2. Lấy nội dung câu hỏi vừa xử lý ra khỏi hàng đợi
-        String questionText = requestQueue.poll();
+        requestQueue.poll();
 
         // 3. Lấy nội dung trả lời
         String botReplyText;
@@ -405,16 +409,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     }
 
     private void startNewChatSession(String firstMessage) {
-        chatCounter++;
+
         currentChatId = "chat_" + System.currentTimeMillis(); // Dùng timestamp để ID không trùng
 
-        // Thêm vào menu Drawer
-        Menu menu = navigationView.getMenu();
-        SubMenu historyMenu = menu.findItem(R.id.chat_history_group).getSubMenu();
-        String title = firstMessage.length() > 20 ? firstMessage.substring(0, 20) + "..." : firstMessage;
-
-        // Lưu ý: Dùng ID là chatCounter để bắt sự kiện click, nhưng lưu DB bằng currentChatId chuỗi
-        historyMenu.add(R.id.chat_history_group, chatCounter, Menu.NONE, title).setCheckable(true);
     }
 
     // Load 20 tin nhắn mới nhất khi mở đoạn chat cũ
